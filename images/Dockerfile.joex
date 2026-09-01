@@ -16,7 +16,9 @@ RUN apt install -y \
     ghostscript \
     unpaper \
     weasyprint \
-    unoconv \
+    libreoffice \
+    python3-uno \
+    python3-pip \
     python3-distutils-extra \
     fonts-droid-fallback \
     fonts-dejavu \
@@ -25,7 +27,8 @@ RUN apt install -y \
     pngquant \
     ocrmypdf \
     qpdf \
-    docker-ce-cli
+    docker-ce-cli \
+ && pip3 install --break-system-packages --no-cache-dir unoserver
 
 FROM base AS download
 
