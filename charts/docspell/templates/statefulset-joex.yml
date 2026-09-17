@@ -52,6 +52,13 @@ spec:
           readOnly: true
         resources:
           {{- toYaml .Values.joex.resources | nindent 12 }}
+      - name: unoserver
+        image: {{ print .Values.joex.unoserver.image.repo ":" (.Values.joex.unoserver.image.tag | default "latest") | quote }}
+        imagePullPolicy: {{ .Values.joex.unoserver.image.pullPolicy | quote }}
+        {{- with .Values.joex.unoserver.resources }}
+        resources:
+          {{- toYaml . | nindent 12 }}
+        {{- end }}
       volumes:
       - name: config
         secret:

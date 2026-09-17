@@ -16,9 +16,7 @@ RUN apt install -y \
     ghostscript \
     unpaper \
     weasyprint \
-    libreoffice \
-    python3-uno \
-    python3-pip \
+    python3 \
     python3-distutils-extra \
     fonts-droid-fallback \
     fonts-dejavu \
@@ -27,8 +25,11 @@ RUN apt install -y \
     pngquant \
     ocrmypdf \
     qpdf \
-    docker-ce-cli \
- && pip3 install --break-system-packages --no-cache-dir unoserver
+    docker-ce-cli
+
+COPY --from=ghcr.io/astral-sh/uv:python3.14-trixie-slim /uv /uvx /bin/
+
+RUN uv pip install --system --break-system-packages --no-cache "unoserver==3.7"
 
 FROM base AS download
 
