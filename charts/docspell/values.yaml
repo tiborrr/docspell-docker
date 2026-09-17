@@ -147,6 +147,10 @@ joex:
     DOCSPELL_JOEX_CONVERT_UNOCONV_HOST: '127.0.0.1'
     DOCSPELL_JOEX_CONVERT_UNOCONV_PORT: '2003'
   unoserver:
+    # Sidecar for office→PDF conversion. Disable when pointing
+    # DOCSPELL_JOEX_CONVERT_UNOCONV_HOST at an external unoserver.
+    enabled: true
+    port: 2003
     image:
       repo: 'ghcr.io/docspell/unoserver'
       tag: latest

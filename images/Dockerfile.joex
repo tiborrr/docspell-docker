@@ -27,7 +27,7 @@ RUN apt install -y \
     qpdf \
     docker-ce-cli
 
-COPY --from=ghcr.io/astral-sh/uv:python3.14-trixie-slim /uv /uvx /bin/
+COPY --from=ghcr.io/astral-sh/uv:python3.14-trixie-slim /usr/local/bin/uv /usr/local/bin/uvx /bin/
 
 RUN uv pip install --system --break-system-packages --no-cache "unoserver==3.7"
 
